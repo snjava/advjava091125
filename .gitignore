@@ -9,3 +9,5 @@ docs/~$reJava.docx
 **/.settings/**
 **/Servers/**
 **/.mvn/**
+**/.idea/**
+**/.smarttomcat/**
