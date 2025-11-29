@@ -15,6 +15,16 @@ public class ServletLifecycle extends HttpServlet {
     }
 
     @Override
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("Service Servlet");
+    }
+    @Override
+    public void destroy() {
+        System.out.println("Destroy Servlet");
+    }
+
+
+    /*@Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     }
     @Override
@@ -25,14 +35,5 @@ public class ServletLifecycle extends HttpServlet {
     }
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
-    }
-
-    @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("Service Servlet");
-    }
-    @Override
-    public void destroy() {
-        System.out.println("Destroy Servlet");
-    }
+    }*/
 }
