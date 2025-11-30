@@ -42,7 +42,7 @@ public class Validate extends HttpServlet {
             // resp.sendRedirect("home");
             req.setAttribute("addtionalInfo", info);
             RequestDispatcher dis = req.getRequestDispatcher("home");
-            dis.include(req, resp);
+            dis.forward(req, resp);
         } else {
             resp.sendRedirect("invalid");
             //resp.sendRedirect("https://www.google.com");
