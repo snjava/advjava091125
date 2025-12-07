@@ -21,7 +21,7 @@
           <h3>City : <%= city %> </h3>
           <h3>Pincode : <%= pincode %> </h3>
           <h3>State : <%= state %> </h3>
-        <a href='save'>Save</a>
+        <a href='save-data?company=XYZ&name=<%=name%>&email=<%=email%>&contact=<%=contact%>&city=<%=city%>&pin=<%=pincode%>&state=<%=state%>'>Save</a>
     </body>
 </html>
 
