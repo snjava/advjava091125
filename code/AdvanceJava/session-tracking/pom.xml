@@ -26,6 +26,11 @@
           <artifactId>mysql-connector-j</artifactId>
           <version>8.3.0</version>
       </dependency>
+      <dependency>
+          <groupId>com.oracle.database.jdbc</groupId>
+          <artifactId>ojdbc10</artifactId>
+          <version>19.29.0.0</version>
+      </dependency>
 
     <dependency>
       <groupId>junit</groupId>
