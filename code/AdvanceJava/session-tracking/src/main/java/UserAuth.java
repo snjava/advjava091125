@@ -20,7 +20,6 @@ public class UserAuth extends HttpServlet {
         connection = DbUtil.getConnection();
         System.out.println("DB CONNECTION AVAILABLE");
     }
-
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String userName = req.getParameter("uname");
@@ -45,7 +44,6 @@ public class UserAuth extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         if(flag) {
             // 1. Create Session
             HttpSession session = req.getSession();
