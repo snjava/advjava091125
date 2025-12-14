@@ -52,7 +52,7 @@ public class UserAuth extends HttpServlet {
             // 3. Redirect to home.jsp Page
             resp.sendRedirect("home.jsp");
         } else {
-            resp.sendRedirect("login.jsp?msg=invalid");
+            resp.sendRedirect("login.jsp?msg=100");
         }
     }
 }
