@@ -1,5 +1,7 @@
 package com.controller;
 
+import com.dto.TaskDto;
+import com.model.ToDoModel;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -16,11 +18,17 @@ public class CreateTask extends HttpServlet {
         String desc = req.getParameter("desc");
         String status = req.getParameter("status");
         String taskDate = req.getParameter("taskDate");
-
-        System.out.println("Title : " + title);
-        System.out.println("Description : " + desc);
-        System.out.println("Status : " + status);
-        System.out.println("Date : " + taskDate);
-
+        TaskDto taskDto = new TaskDto();
+        taskDto.setTitle(title);
+        taskDto.setTaskDesc(desc);
+        taskDto.setStatus(status);
+        taskDto.setScheduledDt(taskDate);
+        ToDoModel model = new ToDoModel();
+        boolean result = model.saveTask(taskDto);
+        if(result) {
+            resp.sendRedirect("create-task.jsp?code=1");
+        } else {
+            resp.sendRedirect("create-task.jsp?code=2");
+        }
     }
 }

@@ -4,8 +4,23 @@
 </head>
 <body>
 <%@ include file='navigation.jsp'%>
+<%
+    String code = request.getParameter("code");
+    String msg= "";
+    String color="";
+    if("1".equals(code)) {
+        msg = "Your Task Created Successfully...";
+        color="green";
+    } else if("2".equals(code)){
+        msg = "Your Task Creation Failed. Try after Some time...!";
+        color="red";
+    }
+%>
 <center>
     <h2>Create New Task</h2>
+    <% if(code != null) { %>
+        <h3 style='color:<%=color%>'><%=msg%><h3>
+    <%}%>
     <form action='create-my-task'>
         Enter Task Title: <input type='text' name = 'title' placeholder='Enter Title'>
         <br/><br/>
