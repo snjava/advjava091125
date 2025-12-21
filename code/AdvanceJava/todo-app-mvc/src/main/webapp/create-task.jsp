@@ -6,8 +6,7 @@
 <%@ include file='navigation.jsp'%>
 <%
     String code = request.getParameter("code");
-    String msg= "";
-    String color="";
+    String msg= ""; String color="";
     if("1".equals(code)) {
         msg = "Your Task Created Successfully...";
         color="green";
@@ -16,8 +15,7 @@
         color="red";
     }
 %>
-<center>
-    <h2>Create New Task</h2>
+<center><h2>Create New Task</h2>
     <% if(code != null) { %>
         <h3 style='color:<%=color%>'><%=msg%><h3>
     <%}%>
