@@ -1,6 +1,7 @@
 1. Select the topic
 2. Understand the topic (Understand about the system)
-3. Roles and Responsibilities (Whats are the Different Users Who are using this application and for what purpose)
+3. Roles and Responsibilities (Whats are the Different 
+Users Who are using this application and for what purpose)
 4. Find out the different functionalities to be code (Modules creation)
 5. DataBase Designing
 	Create Database (Create tables and insert dummy records)
