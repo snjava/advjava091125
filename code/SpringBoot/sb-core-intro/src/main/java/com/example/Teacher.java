@@ -1,4 +1,4 @@
-package com.example.bean;
+package com.example;
 import org.springframework.stereotype.Service;
 @Service
 public class Teacher {

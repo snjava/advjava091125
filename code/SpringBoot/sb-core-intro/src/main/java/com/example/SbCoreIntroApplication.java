@@ -1,6 +1,5 @@
 package com.example;
 
-import com.example.bean.Student;
 import org.demo.Institute;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,8 +13,9 @@ import org.springframework.context.annotation.Primary;
 public class SbCoreIntroApplication {
 	public static void main(String[] args) {
        ApplicationContext ctx = SpringApplication.run(SbCoreIntroApplication.class, args);
-       Institute st = ctx.getBean(Institute.class);
-       st.printInstituteName();
+       Institute st1 = ctx.getBean(Institute.class);
+       Institute st2 = ctx.getBean("inst1", Institute.class);
+       st1.printInstituteName();
 	}
     @Bean(name = "inst1")
     @Primary
