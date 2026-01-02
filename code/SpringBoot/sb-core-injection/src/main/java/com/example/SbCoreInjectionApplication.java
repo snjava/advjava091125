@@ -3,6 +3,7 @@ package com.example;
 import com.example.bean.Car;
 import com.example.bean.Company;
 import com.example.bean.Engine;
+import com.example.bean.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,8 +17,13 @@ public class SbCoreInjectionApplication {
     Engine engine;*/
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(SbCoreInjectionApplication.class, args);
-        Car car = ctx.getBean(Car.class);
-        car.carPower();
+        Student s1 = ctx.getBean(Student.class);
+        Student s2 = ctx.getBean(Student.class);
+        Student s3 = ctx.getBean(Student.class);
+        Student s4 = ctx.getBean(Student.class);
+        Student s5 = ctx.getBean(Student.class);
+        /*Car car = ctx.getBean(Car.class);
+        car.carPower();*/
     }
 
     @Bean(name = "toyotaObject")
