@@ -1,0 +1,158 @@
+<div class="container py-5">
+  <div class="text-center mb-5">
+    <h1 class="display-4 fw-bold text-primary">
+      <i class="bi bi-check2-square"></i> Task Management System
+    </h1>
+    <p class="lead text-muted">Organize and track your tasks efficiently</p>
+  </div>
+
+  <!-- Task Form -->
+  <div class="card shadow-sm mb-5">
+    <div class="card-header bg-primary text-white">
+      <h2 class="h4 mb-0">
+        <i class="bi bi-{{ isEditMode ? 'pencil-square' : 'plus-circle' }}"></i>
+        {{ isEditMode ? 'Edit Task' : 'Create New Task' }}
+      </h2>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label for="task_title" class="form-label fw-bold">
+              Task Title <span class="text-danger">*</span>
+            </label>
+            <input
+              type="text"
+              id="task_title"
+              formControlName="task_title"
+              placeholder="Enter task title"
+              class="form-control"
+              [class.is-invalid]="taskForm.get('task_title')?.invalid && taskForm.get('task_title')?.touched"
+            />
+            <div class="invalid-feedback" *ngIf="taskForm.get('task_title')?.invalid && taskForm.get('task_title')?.touched">
+              Task title is required
+            </div>
+          </div>
+
+          <div class="col-md-12 mb-3">
+            <label for="taskDesc" class="form-label fw-bold">
+              Task Description <span class="text-danger">*</span>
+            </label>
+            <textarea
+              id="taskDesc"
+              formControlName="taskDesc"
+              placeholder="Enter task description"
+              rows="4"
+              class="form-control"
+              [class.is-invalid]="taskForm.get('taskDesc')?.invalid && taskForm.get('taskDesc')?.touched"
+            ></textarea>
+            <div class="invalid-feedback" *ngIf="taskForm.get('taskDesc')?.invalid && taskForm.get('taskDesc')?.touched">
+              Task description is required
+            </div>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="taskStatus" class="form-label fw-bold">
+              Status <span class="text-danger">*</span>
+            </label>
+            <select id="taskStatus" formControlName="taskStatus" class="form-select">
+              <option *ngFor="let status of statusOptions" [value]="status">
+                {{ status }}
+              </option>
+            </select>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="scheduledDate" class="form-label fw-bold">
+              Scheduled Date <span class="text-danger">*</span>
+            </label>
+            <input
+              type="date"
+              id="scheduledDate"
+              formControlName="scheduledDate"
+              class="form-control"
+              [class.is-invalid]="taskForm.get('scheduledDate')?.invalid && taskForm.get('scheduledDate')?.touched"
+            />
+            <div class="invalid-feedback" *ngIf="taskForm.get('scheduledDate')?.invalid && taskForm.get('scheduledDate')?.touched">
+              Scheduled date is required
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex gap-2">
+          <button type="submit" class="btn btn-primary px-4">
+            <i class="bi bi-{{ isEditMode ? 'check-circle' : 'plus-circle' }}"></i>
+            {{ isEditMode ? 'Update Task' : 'Create Task' }}
+          </button>
+          <button type="button" class="btn btn-secondary px-4" (click)="resetForm()" *ngIf="isEditMode">
+            <i class="bi bi-x-circle"></i>
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Task List -->
+  <div class="card shadow-sm">
+    <div class="card-header bg-success text-white">
+      <h2 class="h4 mb-0">
+        <i class="bi bi-list-task"></i>
+        Task List
+        <span class="badge bg-light text-dark ms-2">{{ tasks.length }}</span>
+      </h2>
+    </div>
+    <div class="card-body">
+      <div *ngIf="tasks.length === 0" class="text-center py-5">
+        <i class="bi bi-inbox display-1 text-muted"></i>
+        <p class="lead text-muted mt-3">No tasks available. Create your first task!</p>
+      </div>
+
+      <div class="row g-4">
+        <div *ngFor="let task of tasks" class="col-md-6 col-lg-4">
+          <div class="card h-100 task-card">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <h5 class="card-title mb-0 flex-grow-1">{{ task.task_title }}</h5>
+                <span class="badge rounded-pill ms-2" [ngClass]="getStatusClass(task.taskStatus)">
+                  {{ task.taskStatus }}
+                </span>
+              </div>
+              
+              <p class="card-text text-muted">{{ task.taskDesc }}</p>
+              
+              <hr>
+              
+              <div class="small">
+                <div class="mb-2">
+                  <i class="bi bi-calendar-event text-primary"></i>
+                  <strong class="ms-1">Scheduled:</strong>
+                  <span class="ms-1">{{ task.scheduledDate | date:'mediumDate' }}</span>
+                </div>
+                <div class="mb-2" *ngIf="task.createdDt">
+                  <i class="bi bi-clock-history text-info"></i>
+                  <strong class="ms-1">Created:</strong>
+                  <span class="ms-1">{{ task.createdDt | date:'short' }}</span>
+                </div>
+                <div class="mb-2" *ngIf="task.updatedDt">
+                  <i class="bi bi-arrow-clockwise text-warning"></i>
+                  <strong class="ms-1">Updated:</strong>
+                  <span class="ms-1">{{ task.updatedDt | date:'short' }}</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="card-footer bg-transparent border-top d-flex gap-2">
+              <button class="btn btn-sm btn-outline-primary flex-fill" (click)="editTask(task)">
+                <i class="bi bi-pencil"></i> Edit
+              </button>
+              <button class="btn btn-sm btn-outline-danger flex-fill" (click)="deleteTask(task.taskId!)">
+                <i class="bi bi-trash"></i> Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

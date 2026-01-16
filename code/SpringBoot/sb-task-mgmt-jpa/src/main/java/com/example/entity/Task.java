@@ -16,7 +16,7 @@ public class Task {
     @SequenceGenerator(name = "task_seq", initialValue = 1, allocationSize = 1)
     private int taskId;
     @Column(name = "title", length = 100, nullable = false)
-    private String taskTitle;
+    private String task_title;
     @Transient
     private int userId;
     private String taskDesc;
@@ -36,12 +36,12 @@ public class Task {
         this.taskId = taskId;
     }
 
-    public String getTaskTitle() {
-        return taskTitle;
+    public String getTask_title() {
+        return task_title;
     }
 
-    public void setTaskTitle(String taskTitle) {
-        this.taskTitle = taskTitle;
+    public void setTask_title(String task_title) {
+        this.task_title = task_title;
     }
 
     public int getUserId() {

@@ -1,0 +1,150 @@
+/* Custom styles to enhance Bootstrap */
+
+.task-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid #e0e0e0;
+}
+
+.task-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Status Badge Colors */
+.status-open {
+  background-color: #0d6efd !important;
+}
+
+.status-inprogress {
+  background-color: #fd7e14 !important;
+}
+
+.status-completed {
+  background-color: #198754 !important;
+}
+
+/* Card enhancements */
+.card {
+  border-radius: 8px;
+}
+
+.card-header {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+/* Form focus effects */
+.form-control:focus,
+.form-select:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Button hover effects */
+.btn {
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Task card title */
+.card-title {
+  color: #333;
+  font-weight: 600;
+  word-break: break-word;
+}
+
+/* Card text */
+.card-text {
+  line-height: 1.6;
+  min-height: 60px;
+}
+
+/* Icon spacing */
+.bi {
+  vertical-align: middle;
+}
+
+/* Badge positioning */
+.badge {
+  font-size: 0.75rem;
+  padding: 0.35em 0.65em;
+  font-weight: 600;
+}
+
+/* Footer buttons */
+.card-footer {
+  padding: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .display-4 {
+    font-size: 2rem;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+}
+
+/* Animation for new cards */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.task-card {
+  animation: fadeIn 0.3s ease-in;
+}
+
+/* Empty state icon */
+.bi-inbox {
+  opacity: 0.3;
+}
+
+/* Form validation feedback */
+.invalid-feedback {
+  display: block;
+  margin-top: 0.25rem;
+}
+
+/* Custom scrollbar for textarea */
+textarea.form-control {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Gap utilities for older Bootstrap versions */
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.g-4 {
+  gap: 1.5rem;
+}
+
+/* Ensure proper spacing */
+.mb-5 {
+  margin-bottom: 3rem !important;
+}
+
+/* Card footer buttons */
+.card-footer .btn {
+  font-size: 0.875rem;
+  padding: 0.375rem 0.75rem;
+}
+
+/* Status badge inside card */
+.card-body .badge {
+  white-space: nowrap;
+}
