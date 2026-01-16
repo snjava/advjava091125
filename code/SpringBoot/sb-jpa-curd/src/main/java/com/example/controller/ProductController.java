@@ -10,12 +10,12 @@ public class ProductController {
     private ProductRepository productRepository;
     @PostMapping("/create-product")
     public String saveProduct(@RequestBody Product product) {
-        productRepository.save(product);
+        productRepository.save(product); // Insert or Update the records
         return "Product Save Successfully.";
     }
     @GetMapping("/get-all-product")
     public List<Product> getProducts() {
-        return productRepository.findAll();
+        return productRepository.findAll(); // Select all the records
     }
     @DeleteMapping("/delete-by-id/{pid}")
     public String deleteProduct(@PathVariable(name = "pid") int id) {
