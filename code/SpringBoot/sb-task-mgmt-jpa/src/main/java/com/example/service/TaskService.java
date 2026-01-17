@@ -8,6 +8,11 @@ import java.util.List;
 public class TaskService {
     @Autowired
     TaskRepository taskRepository;
+
+    public Task getTaskById(int id) {
+        return taskRepository.getById(id);
+    }
+
     public Task saveTask(Task task) {
         return taskRepository.save(task);
     }
