@@ -1,6 +1,8 @@
 package com.example.controller;
 
 import com.example.entity.Employee;
+import com.example.mode.EmpData;
+import com.example.mode.EmpPartialData;
 import com.example.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +29,11 @@ public class EmployeeController {
         return "DELETED Successfully";
     }
     @GetMapping("/get-emp")
-    public List<Employee> getEmp() {
+    public List<EmpData> getEmp() {
         return employeeRepository.selectEmpDetails();
+    }
+    @GetMapping("/get-emp-partial-data")
+    public List<EmpPartialData> getEmppartialData() {
+        return employeeRepository.getEmoData();
     }
 }

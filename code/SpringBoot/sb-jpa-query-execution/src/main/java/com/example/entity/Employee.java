@@ -17,7 +17,12 @@ public class Employee {
     private Double salary;
     @Column(name = "empexp")
     private int experience;
-
+    public int getExperience() {
+        return experience;
+    }
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
     public int getId() {
         return id;
     }
@@ -48,13 +53,5 @@ public class Employee {
 
     public void setSalary(Double salary) {
         this.salary = salary;
-    }
-
-    public int getExperience() {
-        return experience;
-    }
-
-    public void setExperience(int experience) {
-        this.experience = experience;
     }
 }
